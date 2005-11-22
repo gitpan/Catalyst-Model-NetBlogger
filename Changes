@@ -1,4 +1,7 @@
 Revision history for Perl module Catalyst::Model::NetBlogger
 
+0.02 Mon Nov 21 22:03:35 2005
+    - Fixed METHODS and SYNOPSIS pod
+
 0.01 Sat Nov 19 19:19:04 2005
     - Initial release

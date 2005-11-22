@@ -3,11 +3,31 @@ NAME
     entries using Net::Blogger
 
 SYNOPSIS
-        my $path = join('/', $c->req->args);
-        my $revision = $c->req->param('revision') || 'HEAD';
+        # Model
+        __PACKAGE__->config(
+            engine   => 'movabletype',
+            blogid   => 1,
+            username => 'login',
+            password => 'apipassword',
+            proxy    => 'http://example.com/mt/mt-xmlrpc.cgi'
+        );
 
-        $c->stash->{'repository_revision'} = MyApp::M::SVN->revision;
-        $c->stash->{'items'} = MyApp::M::SVN->ls($path, $revision);
+        # Controller
+        sub default : Private {
+            my ($self, $c) = @_;
+
+            {
+                local $^W = 0;
+
+                my ($return, @entries) = $c->model('Blog')->metaWeblog->getRecentPosts({numberOfPosts => 5});
+
+                if ($return) {
+                    $c->stash->{'entries'} = \@entries;
+                };
+            };
+
+            $c->stash->{'template'} = 'blog.tt';
+        };
 
 DESCRIPTION
     This model class uses Net::Blogger to post and retrieve blog entries to
@@ -39,6 +59,8 @@ CONFIG
     The URI to post to at the proxy specified above.
 
 METHODS
+    See Net::Blogger for the available methods.
+
 SEE ALSO
     Catalyst::Manual, Catalyst::Helper, Net::Blogger
 

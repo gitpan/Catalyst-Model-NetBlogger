@@ -1,4 +1,4 @@
-# $Id: NetBlogger.pm 946 2005-11-19 23:27:30Z claco $
+# $Id: NetBlogger.pm 960 2005-11-22 03:14:15Z claco $
 package Catalyst::Model::NetBlogger;
 use strict;
 use warnings;
@@ -6,7 +6,7 @@ use Net::Blogger;
 use NEXT;
 use base 'Catalyst::Base';
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 our $AUTOLOAD;
 
 __PACKAGE__->config(
@@ -70,11 +70,31 @@ Catalyst::Model::NetBlogger - Catalyst Model to post and retrieve blog entries u
 
 =head1 SYNOPSIS
 
-    my $path = join('/', $c->req->args);
-    my $revision = $c->req->param('revision') || 'HEAD';
+    # Model
+    __PACKAGE__->config(
+        engine   => 'movabletype',
+        blogid   => 1,
+        username => 'login',
+        password => 'apipassword',
+        proxy    => 'http://example.com/mt/mt-xmlrpc.cgi'
+    );
 
-    $c->stash->{'repository_revision'} = MyApp::M::SVN->revision;
-    $c->stash->{'items'} = MyApp::M::SVN->ls($path, $revision);
+    # Controller
+    sub default : Private {
+        my ($self, $c) = @_;
+
+        {
+            local $^W = 0;
+
+            my ($return, @entries) = $c->model('Blog')->metaWeblog->getRecentPosts({numberOfPosts => 5});
+
+            if ($return) {
+                $c->stash->{'entries'} = \@entries;
+            };
+        };
+
+        $c->stash->{'template'} = 'blog.tt';
+    };
 
 =head1 DESCRIPTION
 
@@ -119,6 +139,7 @@ The URI to post to at the proxy specified above.
 
 =head1 METHODS
 
+See L<Net::Blogger> for the available methods.
 
 
 =head1 SEE ALSO
