@@ -1,4 +1,4 @@
-# $Id: Makefile.PL 953 2005-11-20 00:13:03Z claco $
+# $Id: Makefile.PL 1000 2005-12-03 01:57:23Z claco $
 use ExtUtils::MakeMaker;
 use 5.008;
 use strict;
@@ -11,7 +11,7 @@ WriteMakefile(
     ABSTRACT     => 'Catalyst Model to post and retrieve blog entries using Net::Blogger',
     PREREQ_PM    => {
         'Catalyst'     => 5.33,
-        'Net::Blogger' => 0.87
+        'Net::Blogger' => 1.01
     },
     (ExtUtils::MakeMaker->VERSION >= 6.11) ?
     (NO_META => 1) : (),

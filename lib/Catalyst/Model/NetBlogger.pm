@@ -1,4 +1,4 @@
-# $Id: NetBlogger.pm 960 2005-11-22 03:14:15Z claco $
+# $Id: NetBlogger.pm 1000 2005-12-03 01:57:23Z claco $
 package Catalyst::Model::NetBlogger;
 use strict;
 use warnings;
@@ -6,29 +6,12 @@ use Net::Blogger;
 use NEXT;
 use base 'Catalyst::Base';
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 our $AUTOLOAD;
 
 __PACKAGE__->config(
     engine => 'blogger'
 );
-
-# This is a hack to add the metWeblog.getRecentPosts to Net::Blogger
-# until it gets updated
-sub Net::Blogger::Engine::Userland::metaWeblog::getRecentPosts {
-  my $self = shift;
-  my $args = (ref($_[0]) eq "HASH") ? shift : {@_};
-  my $call = $self->_Client()->call(
-				    "metaWeblog.getRecentPosts",
-				    $self->_Type(string=>$self->BlogId()),
-				    $self->_Type(string=>$self->Username()),
-				    $self->_Type(string=>$self->Password()),
-                    $self->_Type(int=>$args->{'numberOfPosts'}),
-				    );
-
-    my @posts = ($call) ? (1,@{$call->result()}) : (0,undef);
-    return @posts;
-};
 
 sub new {
     my ($self, $c) = @_;
