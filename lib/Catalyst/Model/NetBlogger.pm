@@ -1,4 +1,4 @@
-# $Id: NetBlogger.pm 1000 2005-12-03 01:57:23Z claco $
+# $Id: NetBlogger.pm 1008 2005-12-08 23:39:49Z claco $
 package Catalyst::Model::NetBlogger;
 use strict;
 use warnings;
@@ -6,7 +6,7 @@ use Net::Blogger;
 use NEXT;
 use base 'Catalyst::Base';
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 our $AUTOLOAD;
 
 __PACKAGE__->config(

@@ -1,5 +1,8 @@
 Revision history for Perl module Catalyst::Model::NetBlogger
 
+0.04 Thu Dec 8 18:43:27 2005
+    - Fixed basic.t to usethe right dist. :-)
+
 0.03 Fri Dec 2 10:56:23 2005
     - Require Net::Blogger 1.01 which now includes metaWeblog.getRecentPosts
 
