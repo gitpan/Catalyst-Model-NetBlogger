@@ -1,4 +1,4 @@
-# $Id: NetBlogger.pm 945 2005-11-19 23:26:50Z claco $
+# $Id: /local/CPAN/Catalyst-Model-NetBlogger/lib/Catalyst/Helper/Model/NetBlogger.pm 1378 2005-11-19T23:26:50.755054Z claco  $
 package Catalyst::Helper::Model::NetBlogger;
 use strict;
 use warnings;

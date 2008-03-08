@@ -1,22 +1,22 @@
-# $Id: Makefile.PL 1000 2005-12-03 01:57:23Z claco $
-use ExtUtils::MakeMaker;
-use 5.008;
+# $Id: /local/CPAN/Catalyst-Model-NetBlogger/Makefile.PL 1392 2008-03-08T01:58:08.842672Z claco  $
 use strict;
-use warnings FATAL => 'all';
+use warnings;
+use inc::Module::Install 0.65;
 
-WriteMakefile(
-    NAME         => 'Catalyst::Model::NetBlogger',
-    VERSION_FROM => 'lib/Catalyst/Model/NetBlogger.pm',
-    AUTHOR       => 'Christopher H. Laco <claco@chrislaco.com>',
-    ABSTRACT     => 'Catalyst Model to post and retrieve blog entries using Net::Blogger',
-    PREREQ_PM    => {
-        'Catalyst'     => 5.33,
-        'Net::Blogger' => 1.01
-    },
-    (ExtUtils::MakeMaker->VERSION >= 6.11) ?
-    (NO_META => 1) : (),
-    dist => {
-        PREOP => 'pod2text lib/Catalyst/Model/NetBlogger.pm > $(DISTVNAME)/README',
-    },
-    clean => { FILES => 't/TestApp'},
-);
+name 'Catalyst-Model-NetBlogger';
+license 'artistic';
+perl_version '5.008000';
+all_from 'lib/Catalyst/Model/NetBlogger.pm';
+
+requires 'Catalyst' => 5.33;
+requires 'Net::Blogger' => 1.01;
+
+tests "t/*.t t/*/*.t";
+clean_files "Catalyst-Model-NetBlogger-* t/var t/TestApp";
+
+eval {
+    system 'pod2text lib/Catalyst/Model/NetBlogger.pm > README';
+};
+
+auto_install;
+WriteAll;

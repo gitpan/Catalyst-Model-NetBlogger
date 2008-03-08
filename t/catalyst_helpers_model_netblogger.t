@@ -1,5 +1,5 @@
 #!perl -w
-# $Id: catalyst_helpers_model_netblogger.t 954 2005-11-20 00:13:50Z claco $
+# $Id: /local/CPAN/Catalyst-Model-NetBlogger/t/catalyst_helpers_model_netblogger.t 1382 2005-11-20T00:13:50.676340Z claco  $
 use strict;
 use warnings;
 use Test::More;

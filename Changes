@@ -1,5 +1,8 @@
 Revision history for Perl module Catalyst::Model::NetBlogger
 
+0.04001 Fri Mar 7 20:51:23 2008
+    - Convert to Module::Install
+
 0.04 Thu Dec 8 18:43:27 2005
     - Fixed basic.t to usethe right dist. :-)
 

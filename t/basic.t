@@ -1,5 +1,5 @@
 #!perl -wT
-# $Id: basic.t 1010 2005-12-08 23:40:44Z claco $
+# $Id: /local/CPAN/Catalyst-Model-NetBlogger/t/basic.t 1390 2005-12-08T23:40:44.862870Z claco  $
 use strict;
 use warnings;
 use Test::More tests => 2;

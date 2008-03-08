@@ -1,5 +1,5 @@
 #!perl -wT
-# $Id: pod_coverage.t 943 2005-11-19 03:45:12Z claco $
+# $Id: /local/CPAN/Catalyst-Model-NetBlogger/t/pod_coverage.t 1376 2005-11-19T03:45:12.647758Z claco  $
 use strict;
 use warnings;
 use Test::More;
